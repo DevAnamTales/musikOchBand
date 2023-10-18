@@ -1,10 +1,29 @@
-[
-  {
-    "name": "Test",
-    "info": "rock"
-  },
-  {
-    "name": "Yallah",
-    "info": "soothing"
-  }
-]
+{
+  "bands": [
+    {
+      "name": "fsd",
+      "info": "fsd"
+    },
+    {
+      "name": "rwer",
+      "info": "rwer"
+    }
+  ],
+  "musicians": [
+    {
+      "name": "fwef",
+      "info": "rwe",
+      "instrument": "rwe"
+    },
+    {
+      "name": "rwer",
+      "info": "re",
+      "instrument": "re"
+    },
+    {
+      "name": "sky",
+      "info": "rocl",
+      "instrument": "dsk"
+    }
+  ]
+}

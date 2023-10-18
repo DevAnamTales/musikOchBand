@@ -11,8 +11,8 @@ export default class Band {
   dataInfo() {
     return {
       "name": this.name,
-      "info": this.info
+      "info": this.info,
+    
     };
   }
 }
-

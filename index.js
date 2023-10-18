@@ -29,12 +29,20 @@ Val ->`);
       const bandInfo = prompt("Band Info: ");
       console.log("creating a band");
       const band1 = bandAndMusicians.createBand(bandName, bandInfo);
-      //console.log(band1)
+      console.log(band1)
       bandAndMusicians.updateJsonFile()
       break;
     case "2":
+      prompt("Band Index: ");
+      bandAndMusicians.removeBand(1)
       break;
     case "3":
+      const name = prompt("Name: ")
+      const info = prompt("Info: ")
+      const instrument = prompt("Instrument: ")
+      const newMuscians = bandAndMusicians.createMusician(name, info, instrument)
+      console.log(newMuscians)
+      bandAndMusicians.updateJsonFile()
       break;
     case "4":
       break;
