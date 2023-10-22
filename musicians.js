@@ -1,20 +1,25 @@
 export default class Musicians {
 
-  constructor(name, info, instrument) {
+  constructor(name, info, birthYear, instruments) {
+
     this.name = name;
-    this.infoText = info;
-    //this.#birthYear = birthYear;
-    //this.#bands = bands;
-    //this.#formerBands = formerBands;
-    this.instrument = instrument;
+    this.info = info;
+    this.birthYear = birthYear;
+    this.presentBands = [];
+    this.formerBands = [];
+    this.instruments = instruments || [];
 
   }
-  dataInfo() {
-    return {
-      "name": this.name,
-      "info": this.infoText,
-      "instrument": this.instrument
-
-    };
+  /*   dataInfo() {
+      return {
+        "id": this.id,
+        "name": this.name,
+        "info": this.infoText,
+        "instrument": this.instrument
+  
+      };
+    } */
+  getName() {
+    return this.name;
   }
 }
