@@ -1,11 +1,11 @@
 import PromptSync from "prompt-sync";
 import BandsAndMusicians from "./manageBandsAndMusicians.js";
-import Musicians from "./musicians.js";
-import fs from "fs";
+//import Musicians from "./musicians.js";
+//import fs from "fs";
 
 const prompt = PromptSync({ sigint: true });
 const bandAndMusicians = new BandsAndMusicians();
-const musicians = new Musicians()
+//const musicians = new Musicians()
 
 
 // Start Meny
@@ -21,7 +21,7 @@ Meny
 5- Add/remove musician from band
 6- Add/remove band from musician
 7- Show band info
-A. Terminate Program
+E. Terminate Program
 
 Val ->`);
   const val = prompt();
@@ -32,7 +32,7 @@ Val ->`);
       const bandName = prompt("Band Name: ");
       const bandInfo = prompt("Band Info: ");
       const formedYear = parseInt(prompt("Band Formed Year: "));
-      const resolvedYear = prompt("Band Resolved Year, if bands exists press enter : ");
+      const resolvedYear = prompt("Band Resolved Year, if band exists press enter : ");
 
       console.log("creating a band");
       const newBand = bandAndMusicians.createBand(bandName, bandInfo, formedYear, resolvedYear);
