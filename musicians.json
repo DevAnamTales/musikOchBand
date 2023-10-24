@@ -1,20 +1,14 @@
 {
   "musicians": [
     {
-      "name": "ali",
-      "info": "rock",
-      "birthYear": 1987,
-      "presentBands": [
-        {
-          "name": "satraang",
-          "info": "rock"
-        }
-      ],
+      "name": "James",
+      "info": "rock singer",
+      "birthYear": 1990,
+      "presentBands": [],
       "formerBands": [],
       "instruments": [
-        "piano",
         "guitar",
-        "abc"
+        "piano"
       ]
     }
   ]

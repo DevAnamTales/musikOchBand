@@ -1,31 +1,12 @@
 {
   "bands": [
     {
-      "name": "satraang",
+      "name": "Test",
       "info": "rock",
-      "formedYear": 1998,
+      "formedYear": 1990,
       "resolvedYear": null,
-      "members": [
-        {
-          "name": "ali",
-          "info": "rock",
-          "instruments": [
-            "guitar",
-            "abc"
-          ],
-          "birthYear": 1987
-        }
-      ],
-      "formerMembers": [
-        {
-          "name": "atif",
-          "info": "rock",
-          "instruments": [
-            "piano",
-            "guitar"
-          ]
-        }
-      ]
+      "members": [],
+      "formerMembers": []
     }
   ]
 }
