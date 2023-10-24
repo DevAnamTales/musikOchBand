@@ -10,15 +10,6 @@ export default class Musicians {
     this.instruments = instruments || [];
 
   }
-  /*   dataInfo() {
-      return {
-        "id": this.id,
-        "name": this.name,
-        "info": this.infoText,
-        "instrument": this.instrument
-  
-      };
-    } */
   getName() {
     return this.name;
   }
