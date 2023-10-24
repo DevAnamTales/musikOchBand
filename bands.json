@@ -1,12 +1,31 @@
 {
   "bands": [
     {
-      "name": "Toppen",
-      "info": "Rock band",
-      "formedYear": 1990,
+      "name": "satraang",
+      "info": "rock",
+      "formedYear": 1998,
       "resolvedYear": null,
-      "members": [],
-      "formerMembers": []
+      "members": [
+        {
+          "name": "ali",
+          "info": "rock",
+          "instruments": [
+            "guitar",
+            "abc"
+          ],
+          "birthYear": 1987
+        }
+      ],
+      "formerMembers": [
+        {
+          "name": "atif",
+          "info": "rock",
+          "instruments": [
+            "piano",
+            "guitar"
+          ]
+        }
+      ]
     }
   ]
 }
