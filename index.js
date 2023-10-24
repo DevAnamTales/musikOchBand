@@ -18,9 +18,10 @@ Meny
 2- Remove a band
 3- Create a musician
 4- Remove a musician
-5- Add/remove musician from band
-6- Add/remove band from musician
+5- Add/remove musician to/from band
+6- Add/remove band to/from musician
 7- Show band info
+8- Show musician info
 E. Terminate Program
 
 Val ->`);
@@ -67,11 +68,8 @@ Val ->`);
       break;
 
     case "5":
-      console.log("Musicians: " + bandAndMusicians.listAllMusicians());
-      console.log("Bands: " + bandAndMusicians.listAllBands());
-      console.log("Bands in Data:", bandAndMusicians.bands);
-      console.log("Musicians in Data:", bandAndMusicians.musicians);
-
+      const all_Bands = bandAndMusicians.listAllBands()
+      console.log(all_Bands)
       const bandName1 = prompt("Band Name: ");
       const musicianNameToAddOrRemove = prompt("Musician Name: ");
       console.log("Band Name to Add/Remove: " + bandName1);
@@ -163,6 +161,13 @@ Val ->`);
       const bandInformation = bandAndMusicians.getBandInfo(bandNameToGetInfoFor)
       console.log(bandInformation)
       break;
+    
+    case "8":
+      const musicianNameToGetInfoFor = prompt("Musician Name: ")
+      const musicianInformation = bandAndMusicians.getMusicianInfo(musicianNameToGetInfoFor)
+      console.log(musicianInformation)
+      break;
+    
     case "E":
       console.log("Program terminated!");
       run = false;
