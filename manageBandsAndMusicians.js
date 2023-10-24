@@ -9,7 +9,7 @@ export default class BandsAndMusicians {
     this.musicians = []
     this.readDataFromFile('bands.json', 'musicians.json');
   }
-  
+
   createBand(bandName, info, formedYear, resolvedYear) {
     if (resolvedYear === "") {
       resolvedYear = null;
@@ -100,14 +100,13 @@ export default class BandsAndMusicians {
     const musician = this.musicians.find(m => m.name === musicianName);
     const band = this.bands.find(b => b.name === bandName);
     console.log("Musician:", musician);
-    console.log("Present Bands:", musician.presentBands);
     if (musician && band) {
       const bandIndex = musician.presentBands.indexOf(band);
       console.log(bandIndex)
       if (bandIndex !== -1) {
         musician.presentBands.splice(bandIndex, 1);
         console.log("ok")
-
+        musician.formerBands.push(band);
         return true; // Success
       }
     }
@@ -131,8 +130,6 @@ export default class BandsAndMusicians {
   getBandInfo(bandName) {
     const band = this.bands.find(b => b.name === bandName);
     if (band) {
-      const currentYear = new Date().getFullYear();
-
       return {
         name: band.name,
         info: band.info,
@@ -140,16 +137,34 @@ export default class BandsAndMusicians {
         resolvedYear: band.resolvedYear,
         members: band.members.map(member => ({
           name: member.name,
-          birthYear: parseInt(member.birthYear),
-          age: currentYear - member.birthYear,
-          instruments: member.instruments
         })),
         formerMembers: band.formerMembers.map(formerMember => ({
           name: formerMember.name,
         }))
       };
     } else {
-      return null; // Band not found
+      return ("band not found"); // Band not found
+    }
+  }
+
+  getMusicianInfo(musicianName) {
+    const currentYear = new Date().getFullYear();
+    const musician = this.musicians.find(b => b.name === musicianName);
+    if (musician) {
+      //const currentYear = new Date().getFullYear();
+
+      return {
+        name: musician.name,
+        age: currentYear - musician.birthYear,
+        presentBands: musician.presentBands.map(presentBand => ({
+          name: presentBand.name,
+        })),
+        formerBands: musician.formerBands.map(formerbands => ({
+          name: formerbands.name,
+        }))
+      };
+    } else {
+      return ("musician not found"); // Band not found
     }
   }
 
@@ -179,16 +194,23 @@ export default class BandsAndMusicians {
       this.bands.forEach(band => {
         band.members = band.members.map(member => ({
           ...member,
-          instruments: member.instruments ? member.instruments.join(', ') : ' ', //if there is no insturments, show nothing
+          instruments: member.instruments ? member.instruments.join(',') : ' ', //if there is no insturments, show nothing
         }));
       });
 
-
       const musiciansData = fs.readFileSync(musiciansFile, 'utf8');
       const parseMusciandData = JSON.parse(musiciansData);
+      console.log('Data from musiciansFile:', parseMusciandData);
       this.musicians = parseMusciandData.musicians.map(musician => ({
         ...musician
       }))
+
+      this.musicians.forEach(musician => {
+        musician.presentBands = musician.presentBands.map(band => ({
+          ...band,
+          //instruments: member.instruments ? member.instruments.join(', ') : ' ', //if there is no insturments, show nothing
+        }));
+      });
 
     } catch (error) {
       console.error('Error reading data from JSON files:', error);
