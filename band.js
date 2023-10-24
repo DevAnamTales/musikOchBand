@@ -8,16 +8,8 @@ export default class Band {
     this.members = [];
     this.formerMembers = [];
   }
-  /*   dataInfo() {
-      return {
-        "id": this.id,
-        "name": this.name,
-        "info": this.info,
-        members: this.members.map(member => member.dataInfo()) // Serialize band members
   
-      };
-    } */
   getName() {
     return this.name;
   }
-  }
+}
