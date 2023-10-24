@@ -1,0 +1,12 @@
+{
+  "bands": [
+    {
+      "name": "Test",
+      "info": "rock",
+      "formedYear": 1990,
+      "resolvedYear": null,
+      "members": [],
+      "formerMembers": []
+    }
+  ]
+}

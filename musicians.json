@@ -1,0 +1,15 @@
+{
+  "musicians": [
+    {
+      "name": "James",
+      "info": "rock singer",
+      "birthYear": 1990,
+      "presentBands": [],
+      "formerBands": [],
+      "instruments": [
+        "guitar",
+        "piano"
+      ]
+    }
+  ]
+}
