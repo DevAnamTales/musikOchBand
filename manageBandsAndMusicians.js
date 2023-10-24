@@ -2,13 +2,14 @@ import fs from "fs";
 import Band from "./band.js";
 import Musicians from "./musicians.js";
 
+
 export default class BandsAndMusicians {
   constructor() {
     this.bands = []
     this.musicians = []
     this.readDataFromFile('bands.json', 'musicians.json');
   }
-
+  
   createBand(bandName, info, formedYear, resolvedYear) {
     if (resolvedYear === "") {
       resolvedYear = null;
@@ -130,6 +131,8 @@ export default class BandsAndMusicians {
   getBandInfo(bandName) {
     const band = this.bands.find(b => b.name === bandName);
     if (band) {
+      const currentYear = new Date().getFullYear();
+
       return {
         name: band.name,
         info: band.info,
@@ -137,8 +140,9 @@ export default class BandsAndMusicians {
         resolvedYear: band.resolvedYear,
         members: band.members.map(member => ({
           name: member.name,
-          bithYear: member.birthyear,
-          instruments: member.instruments[0]
+          birthYear: parseInt(member.birthYear),
+          age: currentYear - member.birthYear,
+          instruments: member.instruments
         })),
         formerMembers: band.formerMembers.map(formerMember => ({
           name: formerMember.name,
@@ -172,6 +176,13 @@ export default class BandsAndMusicians {
         ...band,
         //formedYear: parseInt(band.formedYear),
       }));
+      this.bands.forEach(band => {
+        band.members = band.members.map(member => ({
+          ...member,
+          instruments: member.instruments ? member.instruments.join(', ') : ' ', //if there is no insturments, show nothing
+        }));
+      });
+
 
       const musiciansData = fs.readFileSync(musiciansFile, 'utf8');
       const parseMusciandData = JSON.parse(musiciansData);
@@ -195,7 +206,8 @@ export default class BandsAndMusicians {
           members: band.members ? band.members.map(member => ({
             name: member.name,
             info: member.info,
-            instruments: member.instruments
+            instruments: member.instruments,
+            birthYear: member.birthYear
           })) : [], // Extract member names, info, and instruments or use an empty array if null
           formerMembers: band.formerMembers ? band.formerMembers.map(formerMember => ({
             name: formerMember.name,
@@ -218,7 +230,8 @@ export default class BandsAndMusicians {
             info: formerBand.info, // Include other band properties if needed
           })),
         }),
-      )};
+        )
+      };
     }
     fs.writeFileSync(`./${fileName}`, JSON.stringify(dataToSave, null, 2), (err) => {
       if (err) throw err;
